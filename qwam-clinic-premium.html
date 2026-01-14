@@ -2551,7 +2551,11 @@
             background: var(--orange-hover);
         }
 
-        /* Responsive */
+        /* ========================================
+           RESPONSIVE STYLES
+           ======================================== */
+
+        /* Large Desktop (1200px and below) */
         @media (max-width: 1200px) {
             .dashboard-grid {
                 grid-template-columns: 1fr;
@@ -2560,9 +2564,15 @@
             .charts-grid {
                 grid-template-columns: 1fr;
             }
+
+            .patient-cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
         }
 
+        /* Tablet (1024px and below) */
         @media (max-width: 1024px) {
+            /* Hero Section */
             .hero-container {
                 grid-template-columns: 1fr;
             }
@@ -2571,6 +2581,36 @@
                 display: none;
             }
 
+            .hero-title {
+                font-size: 42px;
+            }
+
+            html[dir="rtl"] .hero-title {
+                font-size: 38px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+                max-width: 100%;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-outline {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .trust-badges {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 24px;
+            }
+
+            /* Services & Team */
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -2583,54 +2623,159 @@
                 grid-template-columns: 1fr;
             }
 
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .admin-sidebar {
-                width: 70px;
-            }
-
-            .admin-sidebar .logo-text,
-            .sidebar-nav-item span,
-            .sidebar-profile-card .info,
-            .sidebar-profile-card .logout {
-                display: none;
-            }
-
-            .sidebar-nav-item {
-                justify-content: center;
-                padding: 14px;
-            }
-
-            .sidebar-profile-card {
-                justify-content: center;
-            }
-
+            /* Admin Layout */
             .admin-main {
-                margin-left: 70px;
+                margin-left: 0;
             }
 
             html[dir="rtl"] .admin-main {
-                margin-left: 0;
-                margin-right: 70px;
+                margin-right: 0;
             }
 
-            .services-grid,
+            .admin-sidebar {
+                position: fixed;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+            }
+
+            html[dir="rtl"] .admin-sidebar {
+                transform: translateX(100%);
+            }
+
+            .admin-sidebar.mobile-open {
+                transform: translateX(0);
+            }
+
+            /* Stats */
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .stat-card {
+                padding: 20px;
+            }
+
+            /* Schedule Table */
+            .schedule-table {
+                font-size: 13px;
+            }
+
+            .schedule-table th,
+            .schedule-table td {
+                padding: 12px 8px;
+            }
+
+            /* Patient Cards */
+            .patient-cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+
+            /* Add mobile menu toggle button */
+            .mobile-menu-toggle {
+                display: flex;
+            }
+        }
+
+        /* Mobile (768px and below) */
+        @media (max-width: 768px) {
+            /* Container */
+            .container {
+                padding: 0 16px;
+            }
+
+            /* Section Padding */
+            .section-padding {
+                padding: 48px 0;
+            }
+
+            /* Patient Portal Nav */
+            .patient-nav {
+                padding: 12px 0;
+            }
+
+            .nav-logo .logo-text {
+                font-size: 16px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            /* Mobile Menu Toggle */
+            .mobile-menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                background: var(--background);
+                border-radius: var(--radius-input);
+                cursor: pointer;
+            }
+
+            /* Hero Section */
+            .hero {
+                padding-top: 60px;
+                min-height: auto;
+                padding-bottom: 60px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            html[dir="rtl"] .hero-title {
+                font-size: 32px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            .trust-badges {
+                gap: 20px;
+            }
+
+            .trust-badge .number {
+                font-size: 24px;
+            }
+
+            .trust-badge .label {
+                font-size: 11px;
+            }
+
+            /* Services Grid */
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            /* Team Grid */
             .team-grid {
                 grid-template-columns: 1fr;
             }
 
-            .footer-grid {
+            /* Booking Form */
+            .booking-form-grid {
                 grid-template-columns: 1fr;
             }
 
+            .time-slots-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            /* Page Switcher */
             .page-switcher {
-                bottom: 20px;
+                bottom: 16px;
                 right: 50%;
                 transform: translateX(50%);
+                padding: 4px;
             }
 
             html[dir="rtl"] .page-switcher {
@@ -2639,9 +2784,354 @@
                 transform: translateX(-50%);
             }
 
-            .nav-links {
+            .page-switcher button {
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+            /* Footer */
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Admin Sidebar - Full width on mobile */
+            .admin-sidebar {
+                width: 260px;
+                transform: translateX(-100%);
+            }
+
+            html[dir="rtl"] .admin-sidebar {
+                transform: translateX(100%);
+            }
+
+            .admin-sidebar.mobile-open {
+                transform: translateX(0);
+            }
+
+            .admin-sidebar .logo-text,
+            .sidebar-nav-item span,
+            .sidebar-profile-card .info,
+            .sidebar-profile-card .logout {
+                display: flex;
+            }
+
+            .sidebar-nav-item {
+                justify-content: flex-start;
+                padding: 12px 16px;
+            }
+
+            html[dir="rtl"] .sidebar-nav-item {
+                justify-content: flex-start;
+            }
+
+            /* Admin Header */
+            .admin-header {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px;
+            }
+
+            .header-left,
+            .header-right {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .header-search {
+                flex: 1;
+            }
+
+            .breadcrumb {
+                font-size: 12px;
+            }
+
+            .header-profile .name {
                 display: none;
             }
+
+            /* Dashboard Title */
+            .dashboard-title h1 {
+                font-size: 24px;
+            }
+
+            .dashboard-title p {
+                font-size: 14px;
+            }
+
+            /* Stats Grid */
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .stat-card {
+                padding: 16px;
+            }
+
+            .stat-card .label {
+                font-size: 12px;
+            }
+
+            .stat-card .value {
+                font-size: 28px;
+            }
+
+            .stat-card .trend {
+                font-size: 11px;
+            }
+
+            /* Schedule Table - Responsive wrapper */
+            .schedule-card {
+                overflow: hidden;
+            }
+
+            .schedule-table-wrapper {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin: 0 -16px;
+                padding: 0 16px;
+            }
+
+            .schedule-table {
+                min-width: 600px;
+            }
+
+            /* Patient Cards */
+            .patient-cards-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .patient-card {
+                padding: 16px;
+            }
+
+            .patient-card-avatar {
+                width: 48px;
+                height: 48px;
+                font-size: 18px;
+            }
+
+            /* Doctor Section */
+            .doctor-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .doctor-avatar {
+                width: 56px;
+                height: 56px;
+                font-size: 20px;
+            }
+
+            .doctor-info h3 {
+                font-size: 18px;
+            }
+
+            /* Quick Actions */
+            .quick-actions-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .quick-action-btn {
+                padding: 12px;
+                font-size: 13px;
+            }
+
+            /* Bulk Message Form */
+            .bulk-message-form {
+                padding: 16px;
+            }
+
+            .form-group {
+                margin-bottom: 16px;
+            }
+
+            .form-group label {
+                font-size: 13px;
+            }
+
+            .patient-checkboxes {
+                grid-template-columns: 1fr;
+                max-height: 200px;
+            }
+
+            /* Modals */
+            .modal,
+            .patient-detail-content {
+                width: 95%;
+                max-width: 95%;
+                padding: 20px;
+                margin: 16px;
+            }
+
+            .modal-header h3,
+            .patient-detail-header h2 {
+                font-size: 18px;
+            }
+
+            /* Buttons */
+            .btn-submit,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+                padding: 12px 20px;
+            }
+
+            .btn-secondary {
+                margin-right: 0;
+                margin-bottom: 8px;
+            }
+
+            /* Charts Grid */
+            .charts-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .chart-card {
+                padding: 16px;
+            }
+
+            .chart-card h3 {
+                font-size: 14px;
+            }
+
+            /* Activity Feed */
+            .activity-card {
+                padding: 16px;
+            }
+
+            .activity-item {
+                padding: 12px 0;
+            }
+
+            .activity-content p {
+                font-size: 13px;
+            }
+
+            /* Table Pagination */
+            .table-pagination {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .pagination-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Small Mobile (480px and below) */
+        @media (max-width: 480px) {
+            /* Hero */
+            .hero-title {
+                font-size: 28px;
+                line-height: 1.2;
+            }
+
+            html[dir="rtl"] .hero-title {
+                font-size: 26px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            /* Buttons */
+            .btn-primary,
+            .btn-outline {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            /* Stats */
+            .stat-card .value {
+                font-size: 24px;
+            }
+
+            /* Time Slots */
+            .time-slots-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+
+            .time-slot {
+                padding: 10px 8px;
+                font-size: 12px;
+            }
+
+            /* Patient Card Sessions */
+            .session-count-row {
+                margin-bottom: 6px;
+            }
+
+            .session-label,
+            .session-value {
+                font-size: 12px;
+            }
+
+            /* Modal Close Button */
+            .modal-close,
+            .patient-detail-close {
+                width: 28px;
+                height: 28px;
+                font-size: 18px;
+            }
+
+            /* Pagination */
+            .pagination-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+        }
+
+        /* Landscape Mobile - fix viewport issues */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero {
+                min-height: auto;
+                padding: 40px 0;
+            }
+
+            .section-padding {
+                padding: 32px 0;
+            }
+
+            .patient-detail-content {
+                max-height: 95vh;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .page-switcher,
+            .admin-sidebar,
+            .header-search,
+            .action-buttons,
+            .modal-overlay {
+                display: none !important;
+            }
+
+            .admin-main {
+                margin: 0 !important;
+            }
+
+            .schedule-table {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Mobile Menu Toggle - Default Hidden */
+        .mobile-menu-toggle {
+            display: none;
         }
     </style>
 </head>
@@ -3442,6 +3932,9 @@
                 <!-- Top Header -->
                 <header class="admin-header">
                     <div class="header-left">
+                        <button class="mobile-menu-toggle" onclick="toggleMobileSidebar()" aria-label="Toggle menu">
+                            <i data-lucide="menu" style="width: 24px; height: 24px;"></i>
+                        </button>
                         <div class="breadcrumb">
                             <span data-lang-en>Dashboard</span>
                             <span data-lang-ar>لوحة التحكم</span>
@@ -3576,7 +4069,8 @@
                                 </div>
                             </div>
 
-                            <table class="schedule-table">
+                            <div class="schedule-table-wrapper">
+                                <table class="schedule-table">
                                 <thead>
                                     <tr>
                                         <th>
@@ -3824,6 +4318,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            </div>
 
                             <div class="table-pagination">
                                 <span class="pagination-info">
@@ -5008,6 +5503,34 @@
                 : `Message Preview:\n\nRecipients: ${selectedPatients.length} patients\nContent: ${messageContent || '(No content)'}`;
 
             alert(previewText);
+        }
+
+        // ========================================
+        // MOBILE SIDEBAR TOGGLE
+        // ========================================
+        function toggleMobileSidebar() {
+            const sidebar = document.querySelector('.admin-sidebar');
+            sidebar.classList.toggle('mobile-open');
+
+            // Close sidebar when clicking outside on mobile
+            if (sidebar.classList.contains('mobile-open')) {
+                document.addEventListener('click', closeSidebarOnClickOutside);
+            } else {
+                document.removeEventListener('click', closeSidebarOnClickOutside);
+            }
+
+            // Re-initialize icons when sidebar opens
+            lucide.createIcons();
+        }
+
+        function closeSidebarOnClickOutside(event) {
+            const sidebar = document.querySelector('.admin-sidebar');
+            const toggleBtn = document.querySelector('.mobile-menu-toggle');
+
+            if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
+                sidebar.classList.remove('mobile-open');
+                document.removeEventListener('click', closeSidebarOnClickOutside);
+            }
         }
 
         // ========================================
